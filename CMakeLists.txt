@@ -6,6 +6,7 @@ set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 project(helloworld VERSION ${PROJECT_VESRION})
 
 option(WITH_BOOST_TEST "Whether to build Boost test" ON)
+option(WITH_GOOGLE_TEST "Whether to build Google test" ON)
 
 configure_file(version.h.in version.h)
 
@@ -44,6 +45,22 @@ if(WITH_BOOST_TEST)
         helloworld
     )
 endif()
+
+if(WITH_GOOGLE_TEST)
+    find_package(GTest REQUIRED)
+    add_executable(g_test_version g_test_version.cpp)
+
+    set_target_properties(g_test_version PROPERTIES
+        CXX_STANDARD 14
+        CXX_STANDARD_REQUIRED ON
+    )
+
+    target_link_libraries(g_test_version
+        GTest::GTest GTest::Main
+        helloworld
+    )
+endif()
+
 
 if (MSVC)
     target_compile_options(helloworld_cli PRIVATE
