@@ -74,7 +74,7 @@ if (MSVC)
             /W4
         )
     endif()
-else ()
+else
     target_compile_options(helloworld_cli PRIVATE
         -Wall -Wextra -pedantic -Werror
     )
