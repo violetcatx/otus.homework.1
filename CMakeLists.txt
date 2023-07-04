@@ -74,7 +74,7 @@ if (MSVC)
             /W4
         )
     endif()
-else
+else ()
     target_compile_options(helloworld_cli PRIVATE
         -Wall -Wextra -pedantic -Werror
     )
@@ -85,7 +85,7 @@ else
         target_compile_options(test_version PRIVATE
             -Wall -Wextra -pedantic -Werror
     )
-    if(GOOGLE_BOOST_TEST)
+    if(WITH_GOOGLE_TEST)
         target_compile_options(g_test_version PRIVATE
             -Wall -Wextra -pedantic -Werror
     )
