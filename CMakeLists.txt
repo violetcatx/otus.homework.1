@@ -84,7 +84,11 @@ else ()
     if(WITH_BOOST_TEST)
         target_compile_options(test_version PRIVATE
             -Wall -Wextra -pedantic -Werror
-        )
+    )
+    if(GOOGLE_BOOST_TEST)
+        target_compile_options(g_test_version PRIVATE
+            -Wall -Wextra -pedantic -Werror
+    )
     endif()
 endif()
 
